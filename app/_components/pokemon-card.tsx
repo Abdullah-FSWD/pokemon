@@ -45,23 +45,23 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
   }
 
   const typeToBgColor: Record<string, string> = {
-    grass: "bg-[#76D02C]",
-    fire: "bg-[#F08030]",
-    water: "bg-[#6890F0]",
-    bug: "bg-[#A8B820]",
-    normal: "bg-[#A8A878]",
-    poison: "bg-[#9B69B6]",
-    electric: "bg-[#F8D030]",
-    ground: "bg-[#E0C068]",
-    fairy: "bg-[#EE99AC]",
-    fighting: "bg-[#C03028]",
-    psychic: "bg-[#F85888]",
-    ghost: "bg-[#6A4C9C]",
-    rock: "bg-[#B8A038]",
-    flying: "bg-[#A7C7E7]",
+    grass: "text-[#76D02C]",
+    fire: "text-[#F08030]",
+    water: "text-[#6890F0]",
+    bug: "text-[#A8B820]",
+    normal: "text-[#A8A878]",
+    poison: "text-[#9B69B6]",
+    electric: "text-[#F8D030]",
+    ground: "text-[#E0C068]",
+    fairy: "text-[#EE99AC]",
+    fighting: "text-[#C03028]",
+    psychic: "text-[#F85888]",
+    ghost: "text-[#6A4C9C]",
+    rock: "text-[#B8A038]",
+    flying: "text-[#A7C7E7]",
   };
 
-  const bgColor = pokemonDetails.types?.map(
+  const textColor = pokemonDetails.types?.map(
     (type) => typeToBgColor[type.type.name]
   );
 
@@ -73,7 +73,6 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
     .map((type) => type.type.name)
     .join(" ")
     .split(" ");
-  console.log("pokemonTypes", pokemonTypes);
 
   return (
     <>
@@ -81,12 +80,12 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
         onClick={() => handleClick(id)}
         key={id}
         className={cn(
-          "group hover:shadow-md transition overflow-hidden border rounded-lg p-3 h-full",
-          bgColor
+          "group hover:shadow-md transition overflow-hidden border rounded-lg p-3 h-full"
+          // bgColor
         )}
       >
         <div className="flex justify-between ">
-          <div className="text-xl text-center p-2">{name}</div>
+          <div className="text-xl text-center p-2 capitalize">{name}</div>
           <div className="text-2xl opacity-40 text-center p-2">#{id}</div>
         </div>
         <div className="relative w-full aspect-video rounded-md overflow-hidden justify-items-center bg-transparent">
@@ -101,7 +100,26 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
         {/* <div>{pokemonTypes}</div> */}
         <div className="flex justify-around items-center rounded-md opacity-60 bg-background p-3 hover:opacity-80">
           {pokemonTypes.map((types, index) => (
-            <div key={index} className="text-xl text-center p-2">
+            <div
+              key={index}
+              className={cn(
+                "text-sm  font-bold text-center p-0.5 rounded-lg hover:bg-sky-500 px-3 text-white uppercase",
+                types === "grass" && "bg-[#76D02C]",
+                types === "fire" && "bg-[#F08030]",
+                types === "water" && "bg-[#6890F0]",
+                types === "bug" && "bg-[#A8B820]",
+                types === "normal" && "bg-[#A8A878]",
+                types === "poison" && "bg-[#9B69B6]",
+                types === "electric" && "bg-[#F8D030]",
+                types === "ground" && "bg-[#E0C068]",
+                types === "fairy" && "bg-[#EE99AC]",
+                types === "fighting" && "bg-[#C03028]",
+                types === "psychic" && "bg-[#F85888]",
+                types === "ghost" && "bg-[#6A4C9C]",
+                types === "rock" && "bg-[#B8A038]",
+                types === "flying" && "bg-[#A7C7E7]"
+              )}
+            >
               {types}
             </div>
           ))}

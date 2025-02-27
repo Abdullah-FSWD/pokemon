@@ -5,6 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
-}
+// export function senitzedId(str: string) {
+//   return str
+//     .split(" ")
+//     .map((split) => split.toLowerCase())
+//     .join("_");
+// }

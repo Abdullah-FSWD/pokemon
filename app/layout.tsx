@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SearchBar } from "./_components/search-bar";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased container m-auto`}
       >
+        <Image
+          src="/pokemonLogo.svg"
+          alt="logo"
+          width={300}
+          height={300}
+          className="m-auto mb-4"
+        />
+        {/* <SearchBar /> */}
         {children}
       </body>
     </html>
