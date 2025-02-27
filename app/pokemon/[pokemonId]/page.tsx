@@ -1,3 +1,7 @@
+import { getPokemonDetails } from "@/lib/pokemonApis";
+import { PokemonDetails } from "./pokemon-detail";
+import axios from "axios";
+
 type PokemonIdPageProps = {
   params: Promise<{
     pokemonId: number;
@@ -6,7 +10,14 @@ type PokemonIdPageProps = {
 
 export default async function PokemonIdPage({ params }: PokemonIdPageProps) {
   const { pokemonId } = await params;
-  
-  console.log("params", pokemonId);
-  return <div>Pokemon Id page {pokemonId} </div>;
+  const response = await getPokemonDetails(`${pokemonId}`);
+  const url = response.species.url;
+  const newData = await axios(url);
+  const description = newData.data;
+  console.log(description);
+  if (!description) {
+    return null;
+  }
+
+  return <PokemonDetails data={response} description={description} />;
 }

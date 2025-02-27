@@ -30,8 +30,6 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
     fetchPokemonDetails();
   }, [id]);
 
-  console.log(pokemonDetails?.types?.[0].type.name);
-
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -44,35 +42,12 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
     route.push(`/pokemon/${id}`);
   }
 
-  const typeToBgColor: Record<string, string> = {
-    grass: "text-[#76D02C]",
-    fire: "text-[#F08030]",
-    water: "text-[#6890F0]",
-    bug: "text-[#A8B820]",
-    normal: "text-[#A8A878]",
-    poison: "text-[#9B69B6]",
-    electric: "text-[#F8D030]",
-    ground: "text-[#E0C068]",
-    fairy: "text-[#EE99AC]",
-    fighting: "text-[#C03028]",
-    psychic: "text-[#F85888]",
-    ghost: "text-[#6A4C9C]",
-    rock: "text-[#B8A038]",
-    flying: "text-[#A7C7E7]",
-  };
-
-  const textColor = pokemonDetails.types?.map(
-    (type) => typeToBgColor[type.type.name]
-  );
-
-  // const pokemonTypes = pokemonDetails.types.map((type) =>
-  //   type.type.name.split(" ")
-  // );
-
   const pokemonTypes = pokemonDetails.types
     .map((type) => type.type.name)
     .join(" ")
     .split(" ");
+
+  console.log("pokemon details", pokemonDetails);
 
   return (
     <>

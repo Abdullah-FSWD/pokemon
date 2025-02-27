@@ -4,10 +4,8 @@ import { PokemonListSchema } from "@/lib/schema";
 
 async function PokemonHome() {
   const results = await getPokemons();
-  console.log(results);
 
   const data = PokemonListSchema.parse(results);
-  console.log("data", data);
 
   if (!data) {
     return <div>Loading...</div>;
