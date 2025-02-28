@@ -103,7 +103,7 @@ export async function PokemonDetails({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="stats" className="border-muted border">
-          {data.stats.map((stat, index) => (
+          {data.stats.map((stat, index: number) => (
             <div key={index} className="p-1">
               <p className="capitalize px-3 pt-2 bg-muted rounded-md ">
                 {"  "}

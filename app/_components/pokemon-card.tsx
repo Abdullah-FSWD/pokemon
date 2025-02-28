@@ -12,6 +12,7 @@ export type PokemonCardProps = {
 };
 
 export function PokemonCard({ id, name }: PokemonCardProps) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [pokemonDetails, setPokemonDetails] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const route = useRouter();
@@ -41,9 +42,8 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
   function handleClick(id: number) {
     route.push(`/pokemon/${id}`);
   }
-
   const pokemonTypes = pokemonDetails.types
-    .map((type) => type.type.name)
+    .map((type: { type: { name: string } }) => type.type.name)
     .join(" ")
     .split(" ");
 
@@ -70,7 +70,6 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
             width={200}
           />
         </div>
-        {/* <div>{pokemonTypes}</div> */}
         <div className="flex justify-around items-center rounded-md opacity-60 bg-background p-3 hover:opacity-80">
           {pokemonTypes.map((types, index: number) => (
             <div

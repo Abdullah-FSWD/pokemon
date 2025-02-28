@@ -14,7 +14,6 @@ export default async function PokemonIdPage({ params }: PokemonIdPageProps) {
   const url = response.species.url;
   const newData = await axios(url);
   const description = newData.data;
-  console.log(description);
   if (!description) {
     return null;
   }
