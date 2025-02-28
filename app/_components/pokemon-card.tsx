@@ -47,8 +47,6 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
     .join(" ")
     .split(" ");
 
-  console.log("pokemon details", pokemonDetails);
-
   return (
     <>
       <div

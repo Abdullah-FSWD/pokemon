@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowLeft, Heart, Share } from "lucide-react";
 import Image from "next/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type pokemonDetailsProps = {
   data: any;
@@ -12,6 +13,7 @@ export function PokemonDetails({ data, description }: pokemonDetailsProps) {
     .map((type) => type.type.name)
     .join(" ")
     .split(" ");
+  console.log("data", data);
   return (
     <div className="container">
       <div className="border-muted-foreground border p-5 opacity-50 rounded-sm flex justify-between hover:bg-muted hover:shadow">
@@ -66,7 +68,37 @@ export function PokemonDetails({ data, description }: pokemonDetailsProps) {
               </div>
             ))}
           </div>
-          <div>{description.flavor_text_entries[0].flavor_text}</div>
+          <div className="p-4 text-muted-foreground text-lg font-medium">
+            {description.flavor_text_entries[0].flavor_text}
+          </div>
+          <div className="flex gap-3 p-4 justify-between">
+            <div className="w-ful flex-1 border border-muted bg-muted/60 rounded-md p-2 text-muted-foreground font-semibold">
+              Height:
+              <p className="px-4 py-1 bg-muted/60 font-bold text-lg border-muted border">
+                {data.height} m
+              </p>
+            </div>
+            <div className="w-ful flex-1 border border-muted bg-muted/60 rounded-md p-2 text-muted-foreground font-semibold">
+              Weight:
+              <p className="px-4 py-1 bg-muted/60 font-bold text-lg border-muted border">
+                {data.weight} kg
+              </p>
+            </div>
+          </div>
+          <Tabs defaultValue="stats">
+            <TabsList className="flex w-full justify-between">
+              <TabsTrigger value="stats" className="w-full text-center">
+                Stats
+              </TabsTrigger>
+              <TabsTrigger value="moves" className="w-full text-center">
+                Moves
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="stats">
+              Make changes to your account here.
+            </TabsContent>
+            <TabsContent value="moves">Change your password here.</TabsContent>
+          </Tabs>
         </div>
       </div>
     </div>
