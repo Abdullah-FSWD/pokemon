@@ -21,7 +21,7 @@ export async function PokemonDetails({
     .split(" ");
   return (
     <div className="max-w-5xl m-auto">
-      <div className="border-muted-foreground border p-5 opacity-50 rounded-sm flex justify-between hover:bg-muted hover:shadow">
+      <div className="border-muted border p-5 opacity-50 rounded-sm flex justify-between hover:bg-muted hover:shadow">
         <Link href="/">
           <ArrowLeft className="size-5" />
         </Link>
@@ -49,7 +49,7 @@ export async function PokemonDetails({
             </div>
           </div>
           <div className="flex justify-start gap-3 items-center rounded-md opacity-60 bg-background p-3 hover:opacity-80">
-            {pokemonTypes.map((types, index) => (
+            {pokemonTypes.map((types, index: number) => (
               <div
                 key={index}
                 className={cn(
