@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Skeleton } from "./skeleton";
 
 export type PokemonCardProps = {
   id: number;
@@ -32,7 +33,7 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
 
   if (!pokemonDetails) {
