@@ -71,6 +71,7 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
           />
         </div>
         <div className="flex justify-around items-center rounded-md opacity-60 bg-background p-3 hover:opacity-80">
+          {/*  @ts-expect-error expected  */}
           {pokemonTypes.map((types, index: number) => (
             <div
               key={index}

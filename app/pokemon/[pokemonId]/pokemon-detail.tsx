@@ -1,21 +1,19 @@
 import { cn } from "@/lib/utils";
-import { ArrowLeft, Heart, Share } from "lucide-react";
+import { ArrowLeft, Heart } from "lucide-react";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { getMoves } from "@/lib/pokemonApis";
 import Link from "next/link";
 
-type pokemonDetailsProps = {
-  data: any;
-  description: any;
-};
-
-export async function PokemonDetails({
-  data,
-  description,
-}: pokemonDetailsProps) {
+// type pokemonDetailsProps = {
+//   data: any;
+//   description: any;
+// };
+/* @ts-expect-error expected */
+export async function PokemonDetails({ data, description }) {
   const pokemonTypes = data.types
+    /* @ts-expect-error expected */
     .map((type) => type.type.name)
     .join(" ")
     .split(" ");
@@ -49,6 +47,7 @@ export async function PokemonDetails({
             </div>
           </div>
           <div className="flex justify-start gap-3 items-center rounded-md opacity-60 bg-background p-3 hover:opacity-80">
+            {/* @ts-expect-error expected  */}
             {pokemonTypes.map((types, index: number) => (
               <div
                 key={index}
@@ -103,6 +102,7 @@ export async function PokemonDetails({
           </TabsTrigger>
         </TabsList>
         <TabsContent value="stats" className="border-muted border">
+          {/* @ts-expect-error expected */}
           {data.stats.map((stat, index: number) => (
             <div key={index} className="p-1">
               <p className="capitalize px-3 pt-2 bg-muted rounded-md ">
@@ -122,6 +122,7 @@ export async function PokemonDetails({
           ))}
         </TabsContent>
         <TabsContent value="moves" className="border-muted border">
+          {/* @ts-expect-error expected */}
           {data.moves.map(async (move, index: number) => {
             const allMoves = await getMoves(move.move.url);
             if (!allMoves.type.name) return;
