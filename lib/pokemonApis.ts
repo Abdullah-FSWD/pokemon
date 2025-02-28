@@ -27,3 +27,16 @@ export const getPokemonDetails = async (id: string) => {
     };
   }
 };
+
+export async function getMoves(url: string) {
+  try {
+    const res = await axios(url);
+    const data = res.data;
+    return data;
+  } catch (error) {
+    return {
+      // @ts-expect-error error is expectd
+      error: `Something went wrong${error.message}`,
+    };
+  }
+}

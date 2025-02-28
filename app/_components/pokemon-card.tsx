@@ -72,7 +72,7 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
         </div>
         {/* <div>{pokemonTypes}</div> */}
         <div className="flex justify-around items-center rounded-md opacity-60 bg-background p-3 hover:opacity-80">
-          {pokemonTypes.map((types, index) => (
+          {pokemonTypes.map((types, index: number) => (
             <div
               key={index}
               className={cn(
