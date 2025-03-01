@@ -55,7 +55,6 @@ export function PokemonCard({ id, name }: PokemonCardProps) {
         key={id}
         className={cn(
           "group hover:shadow-md transition overflow-hidden border rounded-lg p-3 h-full"
-          // bgColor
         )}
       >
         <div className="flex justify-between ">
